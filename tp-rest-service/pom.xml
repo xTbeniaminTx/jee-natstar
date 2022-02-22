@@ -2,9 +2,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>fr.natsystem.poetp</groupId>
-		<artifactId>tp-projet-parent</artifactId>
+		<artifactId>poe-tp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../../tp-projet-parent/pom.xml</relativePath>
+		<relativePath>../../poe-tp/pom.xml</relativePath>
 	</parent>
 	<artifactId>tp-rest-service</artifactId>
 	<packaging>war</packaging>
