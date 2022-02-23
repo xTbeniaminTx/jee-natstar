@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "T_COULEUR")
 public class Couleur {
-	
+
 	@Id
 	@NotNull
 	@Column(name = "id")
@@ -19,10 +19,20 @@ public class Couleur {
 	@Column(name = "couleur")
 	@Size(min = 1, max = 255, message = "La taille est limite a 255 est min 1")
 	private String couleur;
-	
+
 	@Column(name = "petillant")
 	@Size(max = 3, message = "La taille max est 3 char")
 	private String petillant;
+
+	public Couleur() {
+		super();
+	}
+	
+	public Couleur(String couleur, String petillant) {
+		super();
+		this.couleur = couleur;
+		this.petillant = petillant;
+	}
 
 	public Long getId() {
 		return id;
@@ -47,7 +57,5 @@ public class Couleur {
 	public void setPetillant(String petillant) {
 		this.petillant = petillant;
 	}
-	
-	
 
 }

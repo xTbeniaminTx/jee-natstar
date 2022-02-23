@@ -20,6 +20,15 @@ public class Region {
 	@Size(min = 1, max = 255, message = "La taille du nom est limite a 255 est min 1")
 	private String nom;
 
+	public Region() {
+		super();
+	}
+
+	public Region(String nom) {
+		super();
+		this.nom = nom;
+	}
+
 	public Long getId() {
 		return id;
 	}
