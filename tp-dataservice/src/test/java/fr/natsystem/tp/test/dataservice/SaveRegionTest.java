@@ -3,6 +3,8 @@ package fr.natsystem.tp.test.dataservice;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import fr.natsystem.tp.data.models.Region;
 import fr.natsystem.tp.data.repository.BouteilleRepository;
 import fr.natsystem.tp.data.repository.CouleurRepository;
 import fr.natsystem.tp.data.repository.RegionRepository;
+import junit.framework.Assert;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -63,7 +66,7 @@ public class SaveRegionTest {
 	public void testRegion() {
 		Region region = new Region("Bordeaux");
 		
-		repo.saveAndFlush(region);
+		repo.save(region);
 		
 		assertNotNull(region);
 	}
@@ -72,7 +75,7 @@ public class SaveRegionTest {
 	public void testCouleur() {
 		Couleur c = new Couleur("rouge","oui");
 		
-		repoC.saveAndFlush(c);
+		repoC.save(c);
 		
 		assertNotNull(c);
 	}
@@ -85,10 +88,43 @@ public class SaveRegionTest {
 		
 		b.setRegionRf(region);
 		
-		repoB.saveAndFlush(b);
+		repoB.save(b);
 		
 		
 		assertNotNull(b);
+	}
+	
+
+	@Test
+	public void testRegionGet() {
+		
+		
+		List<Region> reg = repo.findAll();
+		
+		for (Region region : reg) {
+			System.out.println(region);
+		}
+		
+		String nomR = repo.findById((long) 15).get().getNom();
+		
+		assertEquals("Bordeaux", nomR);
+		
+	}
+	
+	@Test
+	public void testRegiongetByNom() {
+		
+		
+		List<Region> reg = repo.getAllByNom("Bordeaux");
+		
+		for (Region region : reg) {
+			System.out.println(region);
+		}
+		
+		String nomR = repo.findById((long) 15).get().getNom();
+		
+		assertEquals("Bordeaux", nomR);
+		
 	}
 	
 

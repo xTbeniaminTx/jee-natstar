@@ -42,6 +42,7 @@ public class Region {
 		this.id = id;
 	}
 
+
 	public String getNom() {
 		return nom;
 	}
@@ -49,5 +50,12 @@ public class Region {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	@Override
+	public String toString() {
+		return "Region [id=" + id + ", nom=" + nom + "]";
+	}
+	
+	
 
 }
