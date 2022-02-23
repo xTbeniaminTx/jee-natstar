@@ -1,13 +1,19 @@
 package fr.natsystem.tp.data.embedded;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class IdentitePk {
+public class IdentitePk implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = "nom")
 	private String nom;
 	

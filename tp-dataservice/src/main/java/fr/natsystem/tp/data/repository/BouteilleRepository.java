@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.natsystem.tp.data.models.Bouteille;
 
-public interface BouteilleRepository extends JpaRepository<Bouteille, Integer>, Serializable {
+public interface BouteilleRepository extends JpaRepository<Bouteille, Long>, Serializable {
 
 }

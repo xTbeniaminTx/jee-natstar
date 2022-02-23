@@ -3,8 +3,12 @@ package fr.natsystem.tp.data.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -14,6 +18,8 @@ import javax.validation.constraints.Size;
 public class Bouteille {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_Bouteille")
+	@SequenceGenerator(name = "SQ_Bouteille", sequenceName = "SQ_Bouteille", allocationSize=1)
 	@Column(name = "id")
 	private Long id;
 
@@ -29,11 +35,11 @@ public class Bouteille {
 	private Long contenance;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "region_rf")
+	@JoinColumn(name = "region_rf", referencedColumnName = "id")
 	private Region regionRf;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "couleur_rf")
+	@JoinColumn(name = "couleur_rf", referencedColumnName = "id")
 	private Couleur couleurRf;
 
 	public Bouteille() {
