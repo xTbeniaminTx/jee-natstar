@@ -1,5 +1,11 @@
 package fr.natsystem.tp.data.repository;
 
-public interface BouteilleRepository {
+import java.io.Serializable;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import fr.natsystem.tp.data.models.Bouteille;
+
+public interface BouteilleRepository extends JpaRepository<Bouteille, Integer>, Serializable {
 
 }
