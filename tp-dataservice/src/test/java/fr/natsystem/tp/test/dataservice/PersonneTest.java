@@ -1,7 +1,7 @@
 package fr.natsystem.tp.test.dataservice;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+
 
 import java.util.List;
 

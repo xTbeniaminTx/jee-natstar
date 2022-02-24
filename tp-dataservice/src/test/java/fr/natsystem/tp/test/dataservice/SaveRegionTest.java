@@ -72,6 +72,14 @@ public class SaveRegionTest {
 	}
 
 	@Test
+	public void updateRegion() {
+		int n = regionDataService.updateRegion(25L, "Ukraine");
+
+		assertEquals(1, n);
+	}
+	
+	
+	@Test
 	public void testCouleur() {
 		Couleur c = new Couleur("rouge", "oui");
 
