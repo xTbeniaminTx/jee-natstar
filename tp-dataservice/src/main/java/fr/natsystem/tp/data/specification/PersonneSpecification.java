@@ -20,7 +20,9 @@ public class PersonneSpecification {
 		return (root, query, criteriaBuilder) -> {
 			predicates.add(criteriaBuilder.like(root.get("identite").get("nom"), "%" + valeur + "%"));
 			predicates.add(criteriaBuilder.like(root.get("identite").get("prenom"), "%" + valeur + "%"));
+			
 			return criteriaBuilder.or(predicates.toArray(new Predicate[0]));
+			
 		};
 	}
 
@@ -33,7 +35,9 @@ public class PersonneSpecification {
 			predicates.add(criteriaBuilder.equal(
 					criteriaBuilder.function("YEAR", Long.class, root.get("identite").get("dateNaissance")),
 					anneeNaissance));
+			
 			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+			
 		};
 
 	}
