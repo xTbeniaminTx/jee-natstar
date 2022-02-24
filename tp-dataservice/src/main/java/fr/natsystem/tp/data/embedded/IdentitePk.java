@@ -7,8 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class IdentitePk implements Serializable{
-	
+public class IdentitePk implements Serializable {
+
 	/**
 	 * 
 	 */
@@ -16,14 +16,13 @@ public class IdentitePk implements Serializable{
 
 	@Column(name = "nom")
 	private String nom;
-	
+
 	@Column(name = "prenom")
 	private String prenom;
-	
+
 	@Column(name = "date_naissance")
 	private LocalDate dateNaissance;
 
-	
 	public IdentitePk() {
 		super();
 	}
@@ -51,7 +50,5 @@ public class IdentitePk implements Serializable{
 	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
-	
-	
 
 }
