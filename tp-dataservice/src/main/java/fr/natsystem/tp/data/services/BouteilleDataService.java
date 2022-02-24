@@ -35,7 +35,7 @@ public class BouteilleDataService implements Serializable {
 	@Transactional
 	public List<Bouteille> getParNomRegion(String nom) {
 
-		Specification<Bouteille> spec = Specification.where(BouteilleSpecification.getBouteiilleParNomRegion(nom));
+		Specification<Bouteille> spec = Specification.where(BouteilleSpecification.getBouteilleParNomRegion(nom));
 	
 		List<Bouteille> result = bouteilleRepository.findAll(spec);
 
