@@ -35,7 +35,7 @@ public class PersonneDataService {
 	}
 
 	@Transactional
-	public Page<Personne> getListePersonnesPaginee(String nom, int page, int size, String sortOrder) {
+	public Page<Personne> getListePersonnesPaginee(int page, int size) {
 
 		final Pageable pageable = PageRequest.of(page, size, Sort.by("identite.nom"));
 		Page<Personne> result = personneRepository.findAll(pageable);
