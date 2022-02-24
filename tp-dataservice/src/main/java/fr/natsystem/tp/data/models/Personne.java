@@ -42,4 +42,11 @@ public class Personne {
 		this.identite = identite;
 	}
 
+	@Override
+	public String toString() {
+		return "Personne [id=" + id + ", identite=" + identite + "]";
+	}
+	
+	
+
 }

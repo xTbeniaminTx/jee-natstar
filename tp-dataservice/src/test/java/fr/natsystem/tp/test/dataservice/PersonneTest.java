@@ -1,6 +1,7 @@
 package fr.natsystem.tp.test.dataservice;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -23,9 +24,14 @@ public class PersonneTest {
 	
 	@Test
 	public void testGetPersonne() {
-		List<Personne> result = personneDataService.getPersonnesParNomEtDateNaissance("A", 1998L);
+		List<Personne> result = personneDataService.getPersonnesParNomEtDateNaissance("AA", 2000L);
+		
+		for (Personne personne : result) {
+			System.out.println(personne);
+		}
+		
 		assertNotNull(result);
+		assertNull(result);
 	}
-
 
 }
