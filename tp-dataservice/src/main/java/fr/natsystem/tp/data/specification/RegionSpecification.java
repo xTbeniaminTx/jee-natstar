@@ -22,4 +22,5 @@ public class RegionSpecification {
 		return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("nom"), "%" + nom + "%");
 	}
 	
+
 }
