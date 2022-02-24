@@ -1,5 +1,6 @@
 package fr.natsystem.tp.test.dataservice;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 
@@ -43,6 +44,15 @@ public class PersonneTest {
 		}
 
 		assertNotNull(result);
+
+	}
+	
+	@Test
+	public void testDelete() {
+		
+		int n = personneDataService.deleteByNomOuPrenom("AR");
+
+		assertEquals(3, n);
 
 	}
 

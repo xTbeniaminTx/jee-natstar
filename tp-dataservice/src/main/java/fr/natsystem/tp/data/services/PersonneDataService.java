@@ -25,7 +25,7 @@ public class PersonneDataService {
 
 	@Autowired
 	private PersonneRepository personneRepository;
-	
+
 	@Autowired
 	private EntityManager entityManager;
 
@@ -40,16 +40,15 @@ public class PersonneDataService {
 
 		return result;
 	}
-	
+
 	@Transactional
 	public int deleteByNomOuPrenom(String valeur) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaDelete<Personne> criteriaDelete = PersonneCriteriaDelete.getdeletePersonne(criteriaBuilder, valeur);
-		
-		return entityManager.createQuery(criteriaDelete).executeUpdate();
-	
-	}
 
+		return entityManager.createQuery(criteriaDelete).executeUpdate();
+
+	}
 
 	@Transactional
 	public Page<Personne> getListePersonnesPaginee(int page, int size) {
