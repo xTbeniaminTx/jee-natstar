@@ -5,6 +5,10 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +34,13 @@ public class PersonneDataService {
 		return result;
 	}
 
+	@Transactional
+	public Page<Personne> getListePersonnesPaginee(String nom, int page, int size, String sortOrder) {
+
+		final Pageable pageable = PageRequest.of(page, size, Sort.by("identite.nom"));
+		Page<Personne> result = personneRepository.findAll(pageable);
+
+		return result;
+
+	}
 }
