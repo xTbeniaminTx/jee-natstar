@@ -36,7 +36,7 @@ public class PersonneTest {
 
 	@Test
 	public void testPagination() {
-		Page<Personne> result = personneDataService.getListePersonnesPaginee(0, 10);
+		Page<Personne> result = personneDataService.getListePersonnesPaginee(1, 5);
 
 		for (Personne personne : result) {
 			System.out.println(personne);
