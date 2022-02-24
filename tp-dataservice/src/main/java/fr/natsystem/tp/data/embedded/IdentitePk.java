@@ -23,7 +23,7 @@ public class IdentitePk implements Serializable{
 	@Column(name = "date_naissance")
 	private LocalDate dateNaissance;
 
-
+	
 	public IdentitePk() {
 		super();
 	}
