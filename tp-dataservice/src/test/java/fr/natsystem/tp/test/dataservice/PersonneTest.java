@@ -31,7 +31,7 @@ public class PersonneTest {
 		}
 		
 		assertNotNull(result);
-		assertNull(result);
+		
 	}
 
 }

@@ -51,4 +51,11 @@ public class IdentitePk implements Serializable {
 		this.dateNaissance = dateNaissance;
 	}
 
+	@Override
+	public String toString() {
+		return "IdentitePk [nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + "]";
+	}
+	
+	
+
 }
