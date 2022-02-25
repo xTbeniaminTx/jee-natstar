@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +33,34 @@ public class RegionController {
 		return result;
 		
 	} 
+	
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public RegionDTO createRegion(@RequestBody RegionDTO dto) {
+		
+		
+		Region region = new Region();
+		
+		region.setNom(dto.getNom());
+		
+		regionDataService.saveRegion(region);
+		
+		return dto;
+		
+	} 
+	
+	
+	@PutMapping(path="/{id}" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public RegionDTO updateTodo(@PathVariable("id") Long id, @RequestBody RegionDTO dto ) {
+		
+		Optional<Region> region = regionDataService.getRegionById(id);
+		
+		region.get().setNom(dto.getNom());
+		
+		regionDataService.updateRegion(id, region.get().getNom());
+		
+		return dto;
+    
+    }
 	
 	@GetMapping(path="/{id}" ,produces = MediaType.APPLICATION_JSON_VALUE)
 	public RegionDTO getRegionById(@PathVariable("id") Long id) {
