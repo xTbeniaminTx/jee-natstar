@@ -4,6 +4,5 @@ rebel.xml
 .settings
 dist
 .faces-config.xml.jsfdia
-.project
 .classpath/PFSearchExpressions/
 .DS_Store
