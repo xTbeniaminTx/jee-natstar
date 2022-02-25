@@ -47,13 +47,13 @@ public class PersonneTest {
 
 	}
 	
-	@Test
-	public void testDelete() {
-		
-		int n = personneDataService.deleteByNomOuPrenom("AR");
-
-		assertEquals(3, n);
-
-	}
+//	@Test
+//	public void testDelete() {
+//		
+//		int n = personneDataService.deleteByNomOuPrenom("AR");
+//
+//		assertEquals(3, n);
+//
+//	}
 
 }
