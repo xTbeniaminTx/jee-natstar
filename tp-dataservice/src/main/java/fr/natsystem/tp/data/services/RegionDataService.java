@@ -2,6 +2,7 @@ package fr.natsystem.tp.data.services;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -17,6 +18,7 @@ import fr.natsystem.tp.data.repository.RegionRepository;
 import fr.natsystem.tp.data.specification.RegionCriteriaUpdate;
 import fr.natsystem.tp.data.specification.RegionSpecification;
 
+
 @Service
 public class RegionDataService implements Serializable {
 	private static final long serialVersionUID = -2276139062930532654L;
@@ -30,6 +32,11 @@ public class RegionDataService implements Serializable {
 	@Transactional
 	public Region saveRegion(Region region) {
 		return regionRepository.save(region);
+	}
+	
+	@Transactional
+	public Optional<Region> getRegionById(long id) {
+		return regionRepository.findById(id);
 	}
 
 	@Transactional

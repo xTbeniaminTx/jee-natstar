@@ -11,6 +11,12 @@ import org.springframework.data.repository.query.Param;
 
 import fr.natsystem.tp.data.models.Region;
 
+
+
+
+
+
+
 public interface RegionRepository extends JpaRepository<Region, Long>, Serializable {
 	
 	@Query(value = "SELECT r from Region r WHERE r.nom = :nom")
@@ -19,5 +25,8 @@ public interface RegionRepository extends JpaRepository<Region, Long>, Serializa
 	Optional<List<Region>> findAllByIdInOrderByNom(List<Long> ids);
 	
 	List<Region> findAll(Specification<Region> spec);
+	
+	
+	Optional<Region> findById(Long id);
 
 }

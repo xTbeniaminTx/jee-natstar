@@ -1,6 +1,7 @@
 /target/
 rebel.xml
 .metadata
+.projet
 .settings
 dist
 .faces-config.xml.jsfdia
