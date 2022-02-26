@@ -23,6 +23,7 @@
 	</properties>
 
 	<description>Projet parent TP poe</description>
+	
 	<modules>
 		<module>tp-dataservice</module>
 		<module>tp-rest-service</module>

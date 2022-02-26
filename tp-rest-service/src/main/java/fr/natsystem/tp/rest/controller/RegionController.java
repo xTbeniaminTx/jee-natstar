@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.natsystem.tp.data.models.Region;
 import fr.natsystem.tp.data.services.RegionDataService;
+import fr.natsystem.tp.rest.core.mappings.RegionMapper;
 import fr.natsystem.tp.rest.dto.RegionDTO;
 
 @RestController
@@ -22,6 +24,9 @@ public class RegionController {
 	
 	@Autowired
 	RegionDataService regionDataService;
+	
+	@Autowired
+	RegionMapper regionMapper;
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public RegionDTO getRegion() {
@@ -77,6 +82,13 @@ public class RegionController {
 		return null;
 	
 		
+	} 
+	
+	@DeleteMapping(path="/{id}" )
+	public void deleteRegionById(@PathVariable("id") Long id) {
+		
+		 regionDataService.deleteRegion(id);
+			
 	} 
 
 }

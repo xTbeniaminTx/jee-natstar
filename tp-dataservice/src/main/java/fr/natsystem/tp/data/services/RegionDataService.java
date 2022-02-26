@@ -35,6 +35,11 @@ public class RegionDataService implements Serializable {
 	}
 	
 	@Transactional
+	public void deleteRegion(long id) {
+		regionRepository.deleteById(id);;
+	}
+	
+	@Transactional
 	public Optional<Region> getRegionById(long id) {
 		return regionRepository.findById(id);
 	}
