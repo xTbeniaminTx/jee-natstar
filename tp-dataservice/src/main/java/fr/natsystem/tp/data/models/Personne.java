@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import fr.natsystem.tp.data.embedded.IdentitePk;
@@ -17,6 +18,7 @@ public class Personne {
 	private Long id;
 
 	@EmbeddedId
+	@Valid
 	private IdentitePk identite;
 
 	public Personne() {
