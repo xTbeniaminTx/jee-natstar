@@ -2,20 +2,18 @@ package fr.natsystem.tp.rest.dto;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import fr.natsystem.tp.rest.converter.LocalDateDeserializerUtil;
-import fr.natsystem.tp.rest.converter.LocalDateSerializerUtil;
+import fr.natsystem.tp.data.validation.PrenomCommenceParX;
 
 public class PersonneDTO {
 
 	private Long id;
 	private String nom;
+
+	@PrenomCommenceParX(message = "La personne nest pas un extraterestre")
 	private String prenom;
 
-	@JsonDeserialize(using = LocalDateDeserializerUtil.class)
-	@JsonSerialize(using = LocalDateSerializerUtil.class)
+//	@JsonDeserialize(using = LocalDateDeserializerUtil.class)
+//	@JsonSerialize(using = LocalDateSerializerUtil.class)
 	private LocalDate dateNaissance;
 
 	public PersonneDTO() {
