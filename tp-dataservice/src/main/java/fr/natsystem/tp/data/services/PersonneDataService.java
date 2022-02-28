@@ -58,4 +58,10 @@ public class PersonneDataService {
 		
 		return result;
 	}
+	
+	@Transactional
+	public Personne createPersonne(Personne personne) {
+		
+		return personneRepository.save(personne);
+	}
 }

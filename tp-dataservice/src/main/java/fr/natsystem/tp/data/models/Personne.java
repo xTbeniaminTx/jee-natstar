@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import fr.natsystem.tp.data.embedded.IdentitePk;
 
@@ -12,6 +13,7 @@ import fr.natsystem.tp.data.embedded.IdentitePk;
 public class Personne {
 
 	@Column(name = "id")
+	@NotNull(message = "L'id doit etre reinseigne")
 	private Long id;
 
 	@EmbeddedId
@@ -46,7 +48,5 @@ public class Personne {
 	public String toString() {
 		return "Personne [id=" + id + ", identite=" + identite + "]";
 	}
-	
-	
 
 }
