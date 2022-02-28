@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
-
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -16,22 +15,23 @@ import fr.natsystem.tp.data.models.Personne;
 
 public class PersonneCriteriaDelete {
 
-	public static CriteriaDelete<Personne> getdeletePersonne(CriteriaBuilder criteriaBuilder, String valeur) {
-		if (StringUtils.isBlank(valeur) || criteriaBuilder == null)
-			return null;
-
-		CriteriaDelete<Personne> criteriaDelete = criteriaBuilder.createCriteriaDelete(Personne.class);
+	public static CriteriaDelete<Personne> getDeletePersonne(
+			CriteriaBuilder cb,
+			String valeur
+			) {
+		if (StringUtils.isBlank(valeur) || cb == null) return null;
+		
+		CriteriaDelete<Personne> criteriaDelete = cb.createCriteriaDelete(Personne.class);
 		Root<Personne> root = criteriaDelete.from(Personne.class);
+		
 		List<Predicate> predicates = new ArrayList<>();
-
-		predicates.add(criteriaBuilder.like(root.get("identite").get("nom"), "%" + valeur + "%"));
-		predicates.add(criteriaBuilder.like(root.get("identite").get("prenom"), "%" + valeur + "%"));
-
-		Expression<Boolean> expression = criteriaBuilder.or(predicates.toArray(new Predicate[0]));
-
+		predicates.add(cb.like(root.get("identite").get("nom"), "%" + valeur + "%"));
+		predicates.add(cb.like(root.get("identite").get("prenom"), "%" + valeur + "%"));
+		
+		Expression<Boolean> expression = cb.or(predicates.toArray(new Predicate[0]));
+		
 		criteriaDelete.where(expression);
-
 		return criteriaDelete;
 	}
-
+	
 }

@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import fr.natsystem.tp.data.validation.DateDansLePasse;
+
 @Embeddable
 public class IdentitePk implements Serializable {
 
@@ -21,6 +23,7 @@ public class IdentitePk implements Serializable {
 	private String prenom;
 
 	@Column(name = "date_naissance")
+	@DateDansLePasse
 	private LocalDate dateNaissance;
 
 	public IdentitePk() {

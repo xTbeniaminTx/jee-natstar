@@ -7,7 +7,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,40 +22,40 @@ import fr.natsystem.tp.data.specification.PersonneSpecification;
 @Service
 public class PersonneDataService {
 
-	@Autowired
 	private PersonneRepository personneRepository;
+	private EntityManager em;
 
-	@Autowired
-	private EntityManager entityManager;
-
-	@Transactional
-	public List<Personne> getPersonnesParNomEtDateNaissance(String nom, Long anneeNaissance) {
-
-		Specification<Personne> spec = Specification
-				.where(PersonneSpecification.getPersonneAvecNomOuPrenomContenant(nom))
-				.and(PersonneSpecification.getPersonneParAnneeNaissance(anneeNaissance));
-
-		List<Personne> result = personneRepository.findAll(spec);
-
-		return result;
+	public PersonneDataService(PersonneRepository personneRepository, EntityManager em) {
+		this.personneRepository = personneRepository;
+		this.em = em;
 	}
 
 	@Transactional
 	public int deleteByNomOuPrenom(String valeur) {
-		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaDelete<Personne> criteriaDelete = PersonneCriteriaDelete.getdeletePersonne(criteriaBuilder, valeur);
-
-		return entityManager.createQuery(criteriaDelete).executeUpdate();
-
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaDelete<Personne> criteriaDelete = PersonneCriteriaDelete.getDeletePersonne(cb, valeur);
+		return em.createQuery(criteriaDelete).executeUpdate();
+	}
+	
+	@Transactional
+	public List<Personne> getPersonnesParNomEtAnneeNaissance(String nom, Long anneeNaissance) {
+		
+		Specification<Personne> spec = Specification.where(
+				PersonneSpecification.getPersonneAvecNomOuPrenomContenant(nom))
+					.and(PersonneSpecification.getPersonneParAnneeNaissance(anneeNaissance));
+		
+		List<Personne> result = personneRepository.findAll(spec);
+		
+		return result;
 	}
 
+	
 	@Transactional
 	public Page<Personne> getListePersonnesPaginee(int page, int size) {
-
+		
 		final Pageable pageable = PageRequest.of(page, size, Sort.by("identite.nom"));
 		Page<Personne> result = personneRepository.findAll(pageable);
-
+		
 		return result;
-
 	}
 }
